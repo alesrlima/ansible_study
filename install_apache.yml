@@ -4,53 +4,30 @@
   become: true
   tasks:
 
-  - name: update repository index
+  - name: install php and  awpache2 packages
     ansible.builtin.apt:
+      name:
+        - apache2
+        - php
+      state: latest
       update_cache: yes
     when: ansible_distribution == "Ubuntu"
 
-  - name: install apache2 package
-    ansible.builtin.apt:
-      name: apache2
-      state: latest
-    when: ansible_distribution == "Ubuntu"
-
-  - name: add php support for apache
-    ansible.builtin.apt:
-      name: libapache2-mod-php
-      state: latest
-    when: ansible_distribution == "Ubuntu" 
-   
-  - name: update repository index
+  - name: install php and httpd packages
     ansible.builtin.dnf:
+      name:
+        - httpd
+        - php
+      state: latest
       update_cache: yes
     when: ansible_distribution == "Fedora"
 
-  - name: install apache2 package
-    ansible.builtin.dnf:
-      name: httpd
-      state: latest
-    when: ansible_distribution == "Fedora"
-
-  - name: add php support for apache
-    ansible.builtin.dnf:
-      name: php
-      state: latest
-    when: ansible_distribution == "Fedora"
-  
-  - name: update repository index
+  - name: install php and apache2 packages
     ansible.builtin.zypper:
+      name:
+        - httpd
+        - php
+      state: latest
       update_cache: yes
     when: ansible_distribution == "Suse"
 
-  - name: install apache2 package
-    ansible.builtin.zypper:
-      name: httpd
-      state: latest
-    when: ansible_distribution == "Suse"
-
-  - name: add php support for apache
-    ansible.builtin.zypper:
-      name: php
-      state: latest
-    when: ansible_distribution == "Suse"

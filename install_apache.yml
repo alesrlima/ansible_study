@@ -37,4 +37,20 @@
       name: php
       state: latest
     when: ansible_distribution == "Fedora"
+  
+  - name: update repository index
+    ansible.builtin.zypper:
+      update_cache: yes
+    when: ansible_distribution == "Suse"
 
+  - name: install apache2 package
+    ansible.builtin.zypper:
+      name: httpd
+      state: latest
+    when: ansible_distribution == "Suse"
+
+  - name: add php support for apache
+    ansible.builtin.zypper:
+      name: php
+      state: latest
+    when: ansible_distribution == "Suse"

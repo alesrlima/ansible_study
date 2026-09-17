@@ -18,3 +18,4 @@
       ansible.builtin.apt:
         name: "{{ [apache_package] + php_packages }}"
         state: latest
+...

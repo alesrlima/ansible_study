@@ -1,10 +1,11 @@
-[redhat]
-192.168.1.215
-
-[ubuntu]
-192.168.1.237
-192.168.1.156
-
-[lab:children]
-redhat
-ubuntu
+---
+all:
+  children:
+    ubuntu:
+      hosts:
+        192.168.1.156:
+        192.168.1.237:
+    redhat:
+      hosts:
+        192.168.1.215:
+...

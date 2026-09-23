@@ -1,3 +1,10 @@
-192.168.1.156 apache_packages=apache2 php_packages=libapache2-mod-php
-192.168.1.215 apache_packages=httpd php_packages=php
-192.168.1.237 apache_packages=apache2 php_packages=libapache2-mod-php
+[redhat]
+192.168.1.215
+
+[ubuntu]
+192.168.1.237
+192.168.1.156
+
+[lab:children]
+redhat
+ubuntu

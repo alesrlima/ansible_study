@@ -1,0 +1,21 @@
+[redhat]
+fedorawkst ansible_host=192.168.1.215
+
+[ubuntu]
+ubuntuwkst02 ansible_host=192.168.1.237
+ubuntuserver ansible_host=192.168.1.156
+
+[linux:children]
+redhat
+ubuntu
+
+[linux:vars]
+zz=children
+
+[redhat:vars]
+squid_port=3128
+zz=hosts
+
+[ubuntu:vars]
+http_port=8080
+zz=hosts

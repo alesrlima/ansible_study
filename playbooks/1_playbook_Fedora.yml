@@ -1,0 +1,18 @@
+---
+
+- name: Update Fedora Linux Servers - Starting deploy
+  hosts: fedorawkst
+  tasks:
+    - name: DNF | Update System
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_cache: yes
+
+- name: Update Ubuntu Linux Server - Starting deploy
+  hosts: ubuntuserver
+  tasks:
+    - name: Ubuntu Like | Update system
+      ansible.builtin.apt: name="*" state=latest
+
+... 

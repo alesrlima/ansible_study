@@ -5,6 +5,9 @@ fedorawkst ansible_host=192.168.1.215
 ubuntuwkst02 ansible_host=192.168.1.237
 ubuntuserver ansible_host=192.168.1.156
 
+[windows]
+windows11wkst ansible_host=192.168.1.33
+
 [linux:children]
 redhat
 ubuntu
@@ -19,3 +22,11 @@ zz=hosts
 [ubuntu:vars]
 http_port=8080
 zz=hosts
+
+[windows:vars]
+ansible_connection=winrm
+ansible_user=Administrator
+ansible_password=132506
+ansible_winrm_transport=ntlm
+ansible_winrm_scheme=http
+ansible_port=5985

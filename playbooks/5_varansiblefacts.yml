@@ -1,0 +1,10 @@
+---
+
+- name: Ansible Facts Vars
+  hosts: fedorawkst
+  tasks:
+    - name: DEBUG | Ansible Facts
+      ansible.builtin.debug:
+        msg: "{{ ansible_virtualization_type }}"
+
+...

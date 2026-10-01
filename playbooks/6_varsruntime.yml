@@ -1,0 +1,11 @@
+---
+
+- name: Variable in Runtime
+  hosts: fedorawkst
+  tasks:
+    - name: DEBUG | Variable in runtime
+      ansible.builtin.debug:
+        msg: "{{ message }}"
+
+
+...

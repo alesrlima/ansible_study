@@ -1,0 +1,22 @@
+---
+
+- name: Ansible Stat
+  hosts: fedorawkst
+  tasks:
+    - name: SISOP | Verificando se o arquivo existe
+      ansible.builtin.stat:
+        path: /tmp/ansible.cfg
+      register: file
+
+    - name: Arquivo encontrado
+      ansible.builtin.debug:
+        msg: "File found"
+      when: file.stat.exists
+
+    - name: Arquivo não encontrado
+      ansible.builtin.debug:
+        msg: "File not found"
+      when: not file.stat.exists
+
+...
+

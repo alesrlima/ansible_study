@@ -1,0 +1,17 @@
+---
+
+- name: Ansible Loop
+  hosts: all
+  tasks:
+    - name: USER | Add user
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: present
+        groups: "{{ 'wheel' if ansible_facts['os_family'] == 'RedHat' else 'sudo' }}"
+      loop:
+        - Barto
+        - Fred
+        - Nina
+        - Duda
+
+...

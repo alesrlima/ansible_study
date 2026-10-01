@@ -1,0 +1,27 @@
+---
+
+- name: Testing TAG
+  hosts: All
+  tasks:
+    - name: SISOP | Set a hostname
+      ansible.builtin.hostname:
+        name: fedorawkst 
+        use: systemd
+      tags: hostname
+
+    - name: SISOP | Disabel SELINUX (Temp)
+      ansible.builtin.hostname: state=disabled
+      tags:
+      - security
+      - selinux
+
+    - name: COPY | Copy ansible.cfg
+      ansible.builtin.copy:
+        src: /etc/ansible/ansible.cfg
+        dest: /tmp/ansible.cfg
+        owner: alelima
+        group: alelima
+        mode: 0644
+      tags: copy
+
+...

@@ -1,4 +1,4 @@
-[redhat]
+[fedora]
 fedorawkst ansible_host=192.168.1.215
 
 [ubuntu]
@@ -9,19 +9,19 @@ ubuntuserver ansible_host=192.168.1.156
 windows11wkst ansible_host=192.168.1.33
 
 [linux:children]
-redhat
+fedora
 ubuntu
 
 [linux:vars]
-zz=children
+#zz=children
 
-[redhat:vars]
-squid_port=3128
-zz=hosts
+[fedora:vars]
+#squid_port=3128
+#zz=hosts
 
 [ubuntu:vars]
-http_port=8080
-zz=hosts
+#http_port=8080
+#zz=hosts
 
 [windows:vars]
 ansible_connection=winrm
@@ -30,3 +30,7 @@ ansible_password=132506
 ansible_winrm_transport=ntlm
 ansible_winrm_scheme=http
 ansible_port=5985
+
+[linux:vars]
+ansible_user=alelima
+ansible_ssh_private_key_file=~/.ssh/id_ansible_key

@@ -1,0 +1,14 @@
+---
+
+- name: Ansible Conditionals
+  hosts: all
+  vars:
+    backup: true
+    snapshot: false
+  tasks:
+    - name: Run the task if 'backup' or 'snapshot' is true
+      ansible.builtin.debug:
+        msg: "Remember, snapshot is not backup!"
+      when: backup or snapshot | bool
+
+...

@@ -1,0 +1,14 @@
+---
+
+- name: Sequence with_sequence
+  hosts: all
+  tasks:
+    - name: USER | Add user
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: present
+        groups: "{{ 'wheel' if ansible_facts['os_family'] == 'RedHat' else 'sudo' }}"
+      with_sequence: start=0 end=9 format=user%x
+
+      
+...

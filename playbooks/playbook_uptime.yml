@@ -1,0 +1,15 @@
+---
+
+- name: Verificar uptime das VMs
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Consultar uptime
+      ansible.builtin.command: uptime
+      register: resultado_uptime
+      changed_when: false
+
+    - name: Exibir uptime da VM
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }}: {{ resultado_uptime.stdout }}"

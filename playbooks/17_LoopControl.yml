@@ -1,0 +1,17 @@
+---
+
+- name: Ansible Loop
+  hosts: fedorawkst
+  tasks:
+    - name: DNF | Install packages
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - vim
+        - net-tools
+        - screen
+      loop_control:
+        pause: 3
+
+...

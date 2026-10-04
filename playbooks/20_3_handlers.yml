@@ -1,0 +1,22 @@
+---
+
+- name: Criar usuário e reiniciar a VM
+  hosts: fedorawkst
+  become: true
+
+  vars:
+    usuario: novo_usuario
+
+  tasks:
+    - name: Criar usuário
+      ansible.builtin.user:
+        name: "{{ usuario }}"
+        state: present
+        create_home: true
+      notify: Reiniciar VM
+
+  handlers:
+    - name: Reiniciar VM
+      ansible.builtin.reboot:
+        msg: "Reinicialização solicitada pelo Ansible após criar o usuário"
+        reboot_timeout: 600

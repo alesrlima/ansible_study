@@ -1,0 +1,6 @@
+---
+- name: Atualizar servidores Linux
+  hosts: all
+  become: true
+  roles:
+    - linux-update
